@@ -1,0 +1,64 @@
+création d'une table:
+CREATE TABLE personne (ID INT(5) NOT NULL AUTO_INCREMENT , Nom VARCHAR(6) NOT NULL , PRIMARY KEY(ID));
+
+ajout de lien:
+ALTER TABLE films ADD CONSTRAINT liaison1 FOREIGN KEY (IDP) REFERENCES personne.IDR;
+
+ajout de donne:
+INSERT INTO personne (ID, nom,) VALUES ('1','anis' ),('2','lamine');
+
+
+ajout d'une ligne:
+ALTER TABLE personne ADD adresse VARCHAR(6) AFTER nom;
+
+
+consultation des donnee:
+SELECT libelle , date FROM films;
+SELECT DISTINCT code, ville FROM adresse;
+SELECT nom FROM adresse WHERE ville LIKE 'Nice'
+SELECT nom FROM personne WHERE adresse LIKE 'zaouiet%'
+
+
+supression des donnees:
+DELETE FROM etudiant WHERE Nom LIKE 'anis';
+
+
+ajout de lien qui efface kol chy ki houwa yetfassa5:
+ALTER TABLE personne ADD CONSTRAINT liaison2 FOREIGN KEY (IDR) REFERENCES films.ID ON DELETE CASCADE;
+
+ajouter une condition sur les colones
+ALTER TABLE personne ADD CONSTRAINT condition1 CHECK (libelle = UPPER(libelle) );
+
+
+pour un variable VAR de type date on peut appliquer les foctions suivants:
+month(VAR)  // day(VAR) // year(VAR) 
+on peut utiliser: date(now()) pour avoir la date actuelle
+pour ajouter deux date on peut utiliser adddate() /// exp: -30 jour  ===> adddate(date(now()) , -30 )
+la date est de la forme 'year-month-day'
+
+
+
+augmentation de 10% de court d'achat des devises commencant par e:
+UPDATE devise SET CoursAchat = 1.1*CoursAchat WHERE CodeD LIKE 'C%';
+
+
+Affichage le nombre de clients dans la table client
+SELECT COUNT(NumCl) FROM Client;
+
+
+requetes imbriquees:
+SELECT * FROM client WHERE( NumCl NOT IN (SELECT client FROM operation));
+
+
+min max et somme:
+SELECT MIN(CoursAchat) FROM devise;
+SELECT MAX(CoursAchat) FROM devise;
+SELECT SUM(CoursAchat) FROM devise;
+
+
+Affichage du nombre de clients dans chaque ville:
+Select adresse,COUNT(*)FROM client GROUP BY adresse;
+
+
+ultimate punsh:
+SELECT detailoperation.montant, client.nom FROM detailoperation,client,operation WHERE client.numCl = operation.Client AND operation.codeOp=detailoperation.codeOp AND operation.typeOp="vente";0
